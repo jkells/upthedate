@@ -20,17 +20,19 @@ class Fixnum
 end
 
 class UTDMonth
+  def to_i
+    DateTime::ABBR_MONTHNAMES.find_index self.class
+  end
 end
 
 class Jan < UTDMonth
-  def to_i; 1; end
 end
 
 class Feb < UTDMonth
-  def to_i; 2; end
 end
 
 class May < UTDMonth
-  def to_i; 5; end
 end
 
+class March < UTDMonth
+end
