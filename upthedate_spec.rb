@@ -9,4 +9,11 @@ describe 'UpTheDate' do
       dt.strftime("%Y/%m/%d").should == '1983/05/13'
     end
   end
+
+  describe '18/Mar/1984' do
+    it 'should parse as a valid DateTime object' do
+      dt = 18/Mar/1984
+      dt.strftime("%Y/%m/%d").should == '1984/03/18'
+    end
+  end
 end
