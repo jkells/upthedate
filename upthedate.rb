@@ -25,15 +25,9 @@ class UTDMonth
   end
 end
 
-class Jan < UTDMonth; end
-class Feb < UTDMonth; end
-class Mar < UTDMonth; end
-class Apr < UTDMonth; end
-class May < UTDMonth; end
-class Jun < UTDMonth; end
-class Jul < UTDMonth; end
-class Aug < UTDMonth; end
-class Sep < UTDMonth; end
-class Oct < UTDMonth; end
-class Nov < UTDMonth; end
-class Dec < UTDMonth; end
+for month in DateTime::ABBR_MONTHNAMES
+  next if !month
+  month_class = Class.new UTDMonth
+  Object.const_set month, month_class
+end
+
