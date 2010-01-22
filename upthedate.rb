@@ -9,12 +9,12 @@ class UTDMonthDay
 end
 
 class Fixnum
-  alias_method :old_minus, :/
+  alias_method :old_division, :/
   def /(n)
     if n.respond_to?(:superclass) && n.superclass == UTDMonth
       UTDMonthDay.new(self, n)
     else
-      old_minus n
+      old_division n
     end
   end
 end
@@ -25,7 +25,7 @@ class UTDMonth
   end
 end
 
-for month in DateTime::ABBR_MONTHNAMES
+DateTime::ABBR_MONTHNAMES.each do |month|
   next if !month
   month_class = Class.new UTDMonth
   Object.const_set month, month_class
